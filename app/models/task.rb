@@ -1,17 +1,12 @@
 class Task < ApplicationRecord
 	belongs_to :user
 	
-	validates :user_id, presence: true
-	validates :content, presence: true
-	
-  FORMAT = AutoHtml::Pipeline.new(
-    AutoHtml::HtmlEscape.new,
-    AutoHtml::Markdown.new,
-  )
-
-  def text=(t)
-    super(t)
-    self[:text_html] = FORMAT.call(t)
-  end
+	auto_html_for :content do
+		html_escape
+		image
+		youtube(:width => "100%", :height => 250, :autoplay => false)
+		link :target => "_blank", :rel => "nofollow"
+		simple_format
+	end
 end
 

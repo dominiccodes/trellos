@@ -20,7 +20,7 @@ gem 'simple_form'
 gem 'devise'
 #gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
-gem 'auto_html'
+gem 'auto_html', '~>1.6.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri
